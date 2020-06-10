@@ -2,7 +2,7 @@
   "name": "with-typescript",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "dev": "next --port=4000",
     "build": "next build",
     "start": "next start",
     "type-check": "tsc"
@@ -15,11 +15,11 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@types/node": "^13.13.5",
-    "@types/react": "^16.9.34",
-    "@types/react-dom": "^16.9.7",
-    "terser-webpack-plugin": "^3.0.1",
-    "typescript": "3.8.3"
+    "@types/node": "^14.0.13",
+    "@types/react": "^16.9.36",
+    "@types/react-dom": "^16.9.8",
+    "terser-webpack-plugin": "^3.0.3",
+    "typescript": "3.9.5"
   },
   "license": "ISC"
 }
