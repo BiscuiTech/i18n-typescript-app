@@ -12,7 +12,7 @@ const ListItem = ({ data }: Props) => {
   const { locale } = useTranslation();
 
   return (
-    <Link href={`${locale}/users/[id]`} as={`${locale}/users/${data.id}`}>
+    <Link href={`/[lang]/users/[id]`} as={`/${locale}/users/${data.id}`}>
       <a>
         {data.id}: {data.name}
       </a>
