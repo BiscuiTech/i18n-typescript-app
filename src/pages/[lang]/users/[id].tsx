@@ -45,7 +45,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         params: { id: user.id.toString(), lang: idiom },
       })),
     ],
-    [] as IUserPaths[]
+    []
   );
 
   // We'll pre-render only these paths at build time.
