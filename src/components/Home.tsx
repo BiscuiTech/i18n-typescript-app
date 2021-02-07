@@ -3,7 +3,7 @@ import Link from "next/link";
 import useTranslation from "../hooks/useTranslation";
 
 export const Home = () => {
-  const { t, locale } = useTranslation();
+  const { t } = useTranslation();
   return (
     <>
       <h1>{t("hello")}</h1>

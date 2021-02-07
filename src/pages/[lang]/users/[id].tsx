@@ -4,6 +4,8 @@ import { User } from "../../../interfaces";
 import { sampleUserData } from "../../../../utils/sample-data";
 import Layout from "../../../components/Layout";
 import ListDetail from "../../../components/ListDetail";
+import { locales } from "../../../translations/config";
+import { IUserPaths, Locale } from "../../../translations/types";
 
 type Props = {
   item?: User;
@@ -36,9 +38,15 @@ export default StaticPropsDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on users
-  const paths = sampleUserData.map((user) => ({
-    params: { id: user.id.toString() },
-  }));
+  const paths = locales.reduce(
+    (acc: IUserPaths[], idiom: Locale) => [
+      ...acc,
+      ...sampleUserData.map((user) => ({
+        params: { id: user.id.toString(), lang: idiom },
+      })),
+    ],
+    [] as IUserPaths[]
+  );
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
