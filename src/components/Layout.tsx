@@ -34,7 +34,7 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
             <a>{navUsersList}</a>
           </Link>
           {" | "}
-          <Link href={`${locale}/api/users`}>
+          <Link href={`/api/users`}>
             <a>{navUsersAPI}</a>
           </Link>
         </nav>
