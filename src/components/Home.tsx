@@ -3,12 +3,14 @@ import Link from "next/link";
 import useTranslation from "../hooks/useTranslation";
 
 export const Home = () => {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const { navAbout } = t("common");
+
   return (
     <>
-      <h1>{t("hello")}</h1>
+      <h1>{navAbout}</h1>
       <p>
-        <Link href="/about">
+        <Link href={`${locale}/about`}>
           <a>About</a>
         </Link>
       </p>

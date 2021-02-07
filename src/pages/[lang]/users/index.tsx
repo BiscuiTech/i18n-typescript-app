@@ -8,7 +8,11 @@ import List from "../../../components/List";
 
 import { locales } from "../../../translations/config";
 
+import useTranslation from "../../../hooks/useTranslation";
+
 const WithStaticProps = () => {
+  const { locale } = useTranslation();
+
   const items: User[] = sampleUserData;
 
   return (
@@ -20,7 +24,7 @@ const WithStaticProps = () => {
       <p>You are currently on: /users</p>
       <List items={items} />
       <p>
-        <Link href="/">
+        <Link href={`${locale}/`}>
           <a>Go home</a>
         </Link>
       </p>

@@ -10,7 +10,7 @@ type Props = {
 };
 
 const Layout = ({ children, title = "This is the default title" }: Props) => {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
 
   const { navHome, navAbout, navUsersList, navUsersAPI } = t("common");
   return (
@@ -22,18 +22,16 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
       </Head>
       <header>
         <nav>
-          <Link href="/">
+          <Link href={`${locale}/`}>
             <a>{navHome}</a>
-          </Link>{" "}
-          |{" "}
-          <Link href="/about">
+          </Link>
+          <Link href={`${locale}/about`}>
             <a>{navAbout}</a>
-          </Link>{" "}
-          |{" "}
-          <Link href="/users">
+          </Link>
+          <Link href={`${locale}/users`}>
             <a>{navUsersList}</a>
-          </Link>{" "}
-          | <a href="/api/users">{navUsersAPI}</a>
+          </Link>
+          | <a href={`${locale}/api/users`}>{navUsersAPI}</a>
         </nav>
         <LocaleSwitcher />
       </header>
