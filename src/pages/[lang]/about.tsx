@@ -10,7 +10,7 @@ const AboutPage = () => {
       <h1>About</h1>
       <p>This is the about page</p>
       <p>
-        <Link href={`${locale}/`}>
+        <Link href={`/${locale}/`}>
           <a>Go home</a>
         </Link>
       </p>

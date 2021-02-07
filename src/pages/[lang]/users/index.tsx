@@ -24,7 +24,7 @@ const WithStaticProps = () => {
       <p>You are currently on: /users</p>
       <List items={items} />
       <p>
-        <Link href={`${locale}/`}>
+        <Link href={`/${locale}/`}>
           <a>Go home</a>
         </Link>
       </p>
