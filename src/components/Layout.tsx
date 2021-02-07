@@ -25,13 +25,18 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
           <Link href={`${locale}/`}>
             <a>{navHome}</a>
           </Link>
+          {" | "}
           <Link href={`${locale}/about`}>
             <a>{navAbout}</a>
           </Link>
+          {" | "}
           <Link href={`${locale}/users`}>
             <a>{navUsersList}</a>
           </Link>
-          | <a href={`${locale}/api/users`}>{navUsersAPI}</a>
+          {" | "}
+          <Link href={`${locale}/api/users`}>
+            <a>{navUsersAPI}</a>
+          </Link>
         </nav>
         <LocaleSwitcher />
       </header>
