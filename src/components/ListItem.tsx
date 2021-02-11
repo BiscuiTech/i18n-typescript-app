@@ -8,9 +8,9 @@ type Props = {
 
 const ListItem = ({ data }: Props) => (
   <LocaleLink href={`/users/${encodeURIComponent(data.id)}`}>
-    {/*  <a> */}
-    {data.id}: {data.name}
-    {/*  </a> */}
+    <a>
+      {data.id}: {data.name}
+    </a>
   </LocaleLink>
 );
 
