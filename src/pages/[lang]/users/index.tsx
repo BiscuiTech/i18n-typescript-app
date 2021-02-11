@@ -1,21 +1,21 @@
-import { GetStaticProps, GetStaticPaths } from "next";
-import Link from "next/link";
-
-import { User } from "../../../interfaces";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { sampleUserData } from "../../../../utils/sample-data";
 import Layout from "../../../components/Layout";
 import List from "../../../components/List";
-
+import LocaleLink from "../../../components/LocaleLink";
+import {
+  getLocalizationProps,
+  LanguageProvider,
+} from "../../../context/LanguageContext";
+import { User } from "../../../interfaces";
 import { locales } from "../../../translations/config";
+import { Localization } from "../../../translations/types";
 
-import useTranslation from "../../../hooks/useTranslation";
-
-const WithStaticProps = () => {
-  const { locale } = useTranslation();
-
-  const items: User[] = sampleUserData;
-
-  return (
+const WithStaticProps: NextPage<{
+  localization: Localization;
+  items: User[];
+}> = ({ localization, items }) => (
+  <LanguageProvider localization={localization}>
     <Layout title="Users List | Next.js + TypeScript Example">
       <h1>Users List</h1>
       <p>
@@ -24,25 +24,28 @@ const WithStaticProps = () => {
       <p>You are currently on: /users</p>
       <List items={items} />
       <p>
-        <Link href={`/${locale}/`}>
+        <LocaleLink href="/">
           <a>Go home</a>
-        </Link>
+        </LocaleLink>
       </p>
     </Layout>
-  );
-};
+  </LanguageProvider>
+);
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = locales.map((idiom) => ({ params: { lang: idiom } }));
-
   return {
-    paths,
+    paths: locales.map((lang) => ({ params: { lang } })),
     fallback: false,
   };
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  return { props: {} };
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  const localization = getLocalizationProps(ctx, "users");
+  // Example for including static props in a Next.js function component page.
+  // Don't forget to include the respective types for any props passed into
+  // the component.
+  const items: User[] = sampleUserData;
+  return { props: { items, localization } };
 };
 
 export default WithStaticProps;

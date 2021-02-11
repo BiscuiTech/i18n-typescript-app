@@ -1,18 +1,19 @@
 import React from "react";
-import Link from "next/link";
 import useTranslation from "../hooks/useTranslation";
+import { Translations } from "../translations/types";
+import LocaleLink from "./LocaleLink";
 
 export const Home = () => {
-  const { t, locale } = useTranslation();
-  const { navAbout } = t("common");
+  const { t } = useTranslation();
+  const common = t("common") as Translations;
 
   return (
     <>
-      <h1>{navAbout}</h1>
+      <h1>{common.navAbout}</h1>
       <p>
-        <Link href={`${locale}/about`}>
+        <LocaleLink href="/about">
           <a>About</a>
-        </Link>
+        </LocaleLink>
       </p>
     </>
   );

@@ -4,6 +4,8 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 import { isLocale, Localization, Locale } from "../translations/types";
 import defaultStrings from "../translations/locales/en";
 import locales from "../translations/locales";
+import { GetStaticPropsContext } from "next";
+import { ParsedUrlQuery } from "querystring";
 
 /**
  * Language Context
@@ -67,7 +69,10 @@ export const LanguageProvider: React.FC<{ localization: Localization }> = ({
   );
 };
 
-export const getLocalizationProps = (ctx: any, namespace: string) => {
+export const getLocalizationProps = (
+  ctx: GetStaticPropsContext<ParsedUrlQuery>,
+  namespace: string
+) => {
   const lang: Locale = (ctx.params?.lang as Locale) || "fr";
   const locale: any = locales[lang];
   const strings: any = locale[namespace];

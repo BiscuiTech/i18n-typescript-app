@@ -1,23 +1,17 @@
 import React from "react";
-import Link from "next/link";
-
 import { User } from "../interfaces";
-import useTranslation from "../hooks/useTranslation";
+import LocaleLink from "./LocaleLink";
 
 type Props = {
   data: User;
 };
 
-const ListItem = ({ data }: Props) => {
-  const { locale } = useTranslation();
-
-  return (
-    <Link href={`/[lang]/users/[id]`} as={`/${locale}/users/${data.id}`}>
-      <a>
-        {data.id}: {data.name}
-      </a>
-    </Link>
-  );
-};
+const ListItem = ({ data }: Props) => (
+  <LocaleLink href={`/users/${encodeURIComponent(data.id)}`}>
+    <a>
+      {data.id}: {data.name}
+    </a>
+  </LocaleLink>
+);
 
 export default ListItem;
