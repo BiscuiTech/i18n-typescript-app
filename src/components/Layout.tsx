@@ -23,15 +23,15 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
       <header>
         <nav>
           <LocaleLink href="/">
-            <a>{common.navHome}</a>
+            <a>{common["navHome"]}</a>
           </LocaleLink>{" "}
           |{" "}
           <LocaleLink href="/about">
-            <a>{common.navAbout}</a>
+            <a>{common["navAbout"]}</a>
           </LocaleLink>{" "}
           |{" "}
           <LocaleLink href="/users">
-            <a>{common.navUsersList}</a>
+            <a>{common["navUsersList"]}</a>
           </LocaleLink>{" "}
           | <a href="/api/users">{common["navUsersAPI"]}</a>
         </nav>

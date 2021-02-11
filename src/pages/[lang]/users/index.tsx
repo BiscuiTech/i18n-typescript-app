@@ -8,7 +8,6 @@ import {
   LanguageProvider,
 } from "../../../context/LanguageContext";
 import { User } from "../../../interfaces";
-import { locales } from "../../../translations/config";
 import { Localization } from "../../../translations/types";
 
 const WithStaticProps: NextPage<{
@@ -34,7 +33,7 @@ const WithStaticProps: NextPage<{
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: locales.map((lang) => ({ params: { lang } })),
+    paths: ["en", "fr"].map((lang) => ({ params: { lang } })),
     fallback: false,
   };
 };
