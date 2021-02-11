@@ -3,6 +3,8 @@ import Link from "next/link";
 import Head from "next/head";
 import LocaleSwitcher from "./LocaleSwitcher";
 import useTranslation from "../hooks/useTranslation";
+import { Translations } from "../translations/types";
+import LocaleLink from "./LocaleLink";
 
 type Props = {
   children?: ReactNode;
@@ -11,6 +13,7 @@ type Props = {
 
 const Layout = ({ children, title = "This is the default title" }: Props) => {
   const { t } = useTranslation();
+  const common = t("common") as Translations;
   return (
     <div>
       <Head>
@@ -20,18 +23,18 @@ const Layout = ({ children, title = "This is the default title" }: Props) => {
       </Head>
       <header>
         <nav>
-          <Link href="/">
-            <a>{t("common")["navHome"]}</a>
-          </Link>{" "}
+          <LocaleLink href="/">
+            <a>{common["navHome"]}</a>
+          </LocaleLink>{" "}
           |{" "}
-          <Link href="/about">
-            <a>{t("common")["navAbout"]}</a>
-          </Link>{" "}
+          <LocaleLink href="/about">
+            <a>{common["navAbout"]}</a>
+          </LocaleLink>{" "}
           |{" "}
-          <Link href="/users">
-            <a>{t("common")["navUsersList"]}</a>
-          </Link>{" "}
-          | <a href="/api/users">{t("common")["navUsersAPI"]}</a>
+          <LocaleLink href="/users">
+            <a>{common["navUsersList"]}</a>
+          </LocaleLink>{" "}
+          | <a href="/api/users">{common["navUsersAPI"]}</a>
         </nav>
         <LocaleSwitcher />
       </header>

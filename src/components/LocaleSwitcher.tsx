@@ -1,7 +1,8 @@
-import React from "react";
 import { useRouter } from "next/router";
-import { locales } from "../translations/config";
+import React from "react";
 import useTranslation from "../hooks/useTranslation";
+import { locales } from "../translations/config";
+import { Translations } from "../translations/types";
 
 const LocaleSwitcher: React.FC = () => {
   const router = useRouter();
@@ -17,13 +18,16 @@ const LocaleSwitcher: React.FC = () => {
     [router]
   );
   const { t, locale } = useTranslation();
+  const common = t("common") as Translations;
   return (
     <div>
       <label className="language-switcher">
-        {t("common")["localeSwitcher"]}
+        {common.localeSwitcher}
         <select onChange={handleLocaleChange} defaultValue={locale}>
-          {locales.map((el) => (
-            <option value={el}>{el}</option>
+          {locales.map((el, i) => (
+            <option value={el} key={i}>
+              {el}
+            </option>
           ))}
         </select>
       </label>
