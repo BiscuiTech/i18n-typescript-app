@@ -31,4 +31,4 @@ yarn-error.log*
 
 
 # Yarn 
-yarn.lock
+**/yarn.lock
