@@ -74,12 +74,13 @@ export const getLocalizationProps = (
   namespace: string
 ) => {
   const lang: Locale = (ctx.params?.lang as Locale) || "fr";
-  const locale: any = locales[lang];
-  const strings: any = locale[namespace];
-  const translations = {
-    common: locales[lang].common,
-    ...strings,
-  };
+  const locale = locales[lang];
+  const strings = locale[namespace];
+  const translations = Object.assign(
+    {},
+    { common: locales[lang].common },
+    strings
+  );
   return {
     locale: ctx.params?.lang || "en",
     translations,
