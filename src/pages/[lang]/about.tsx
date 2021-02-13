@@ -5,10 +5,7 @@ import {
   getLocalizationProps,
   LanguageProvider,
 } from "../../context/LanguageContext";
-<<<<<<< HEAD
 import { locales } from "../../translations/config";
-=======
->>>>>>> 39ec4dd38195a2dffc46a464c8a578f6dc8bbabe
 import { Localization } from "../../translations/types";
 
 const AboutPage: NextPage<{ localization: Localization }> = ({
@@ -37,11 +34,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-<<<<<<< HEAD
     paths: locales.map((lang) => ({ params: { lang } })),
-=======
-    paths: ["en", "fr"].map((lang) => ({ params: { lang } })),
->>>>>>> 39ec4dd38195a2dffc46a464c8a578f6dc8bbabe
     fallback: false,
   };
 };
