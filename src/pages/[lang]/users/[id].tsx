@@ -5,7 +5,11 @@ import { sampleUserData } from "../../../../utils/sample-data";
 import Layout from "../../../components/Layout";
 import ListDetail from "../../../components/ListDetail";
 import { locales } from "../../../translations/config";
-import { IUserPaths, Locale } from "../../../translations/types";
+import { Locale } from "../../../translations/types";
+
+interface IUserPaths {
+  params: { id: string; lang: Locale };
+}
 
 type Props = {
   item?: User;
