@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { sampleUserData } from "../../../../utils/sample-data";
 import Layout from "../../../components/Layout";
 import ListDetail from "../../../components/ListDetail";
+import { locales } from "../../../translations/config";
 import {
   getLocalizationProps,
   LanguageProvider,
@@ -46,7 +47,7 @@ export default StaticPropsDetail;
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on users
   const paths = sampleUserData.flatMap((user) =>
-    ["en", "fr"].flatMap((lang) => ({
+    locales.flatMap((lang) => ({
       params: { lang, id: user.id.toString() },
     }))
   );

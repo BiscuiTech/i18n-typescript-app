@@ -12,9 +12,7 @@ export type Strings = {
 
 export type Localization = {
   locale: Locale;
-
   translations: Translations;
-
   namespace: string;
 };
 
